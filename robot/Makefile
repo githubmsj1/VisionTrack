@@ -1,9 +1,9 @@
-CC=g++
-LIB=-ltld -lferNN -lLKTracker  -ltld_utils serial.o `pkg-config --libs opencv`
+CC=c++
+LIB=-ltld -lferNN -lLKTracker  -ltld_utils serial.o gaussian.o `pkg-config --libs opencv`
 LIBPATH=-L./
 HEAD=-I../include `pkg-config --cflags opencv`
 OBJ=run
-$(OBJ):intelisu.o serial.o
+$(OBJ):intelisu.o serial.o gaussian.o
 	$(CC) -o run intelisu.o $(LIBPATH) $(LIB)
 intelisu.o:
 	$(CC) -c intelisu.cpp $(HEAD)
@@ -29,7 +29,7 @@ tld.o:
 	$(CC) -c TLD.cpp -o tld.o $(HEAD)
 serial.o:
 	$(CC) -c serial.cpp -o serial.o $(HEAD)
-
-
+gaussian.o:
+	$(CC) -c gaussian.cpp -o gaussian.o $(HEAD)
 clean:
 	rm run *.o
