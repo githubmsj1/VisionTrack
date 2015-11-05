@@ -191,7 +191,7 @@ REPEAT:
     pts2.clear();
     frames++;
     printf("Detection rate: %d/%d\n",detections,frames);
-    if (cvWaitKey(1) == 'q')
+    if (cvWaitKey(33) == 'q')
       break;
   }
   if (rep){

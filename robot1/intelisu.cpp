@@ -222,16 +222,12 @@ int main(int argc, char * argv[])
 
             //send data through serial port
             #ifdef SERIAL_PORT
-	    	static int sendRate=0;
-		if((sendRate++)%8==0)
-		{
-            		sendBuff[0]=0xff;
+            sendBuff[0]=0xff;
 			sendBuff[1]=detdObj.x;
 			sendBuff[2]=detdObj.y;
 			sendBuff[3]=0xfe;
-			serial.send_data_tty(sendBuff,4);
-            	}
-	    #endif
+			serial.send_data_tty(sendBuff,3);
+            #endif
 
             //
         }
